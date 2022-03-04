@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/TagHandler.java to edit this template
  */
 package com.example.tags;
-
+import java.io.StringWriter;
+import java.time.LocalTime;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.JspFragment;
@@ -20,29 +21,34 @@ public class bodyHora extends SimpleTagSupport {
      * method is provided by the tag library developer, and handles all tag
      * processing, body iteration, etc.
      */
+    StringWriter sw = new StringWriter();
+    
     @Override
     public void doTag() throws JspException {
         JspWriter out = getJspContext().getOut();
         
-//        try {
-//            // TODO: insert code to write html before writing the body content.
-//            // e.g.:
-//            //
-//            // out.println("<strong>" + attribute_1 + "</strong>");
-//            // out.println("    <blockquote>");
-//
-//            JspFragment f = getJspBody();
-//            if (f != null) {
-//                f.invoke(out);
-//            }
-//
-//            // TODO: insert code to write html after writing the body content.
-//            // e.g.:
-//            //
-//            // out.println("    </blockquote>");
-//        } catch (java.io.IOException ex) {
-//            throw new JspException("Error in bodyHora tag", ex);
-//        }
+        try {
+            // TODO: insert code to write html before writing the body content.
+            // e.g.:
+            //
+            // out.println("<strong>" + attribute_1 + "</strong>");
+            // out.println("    <blockquote>");
+            getJspBody().invoke(sw);
+            getJspContext().getOut().println("El programa dice: " 
+                    + sw.toString() + " " + LocalTime.now());
+
+            JspFragment f = getJspBody();
+            if (f != null) {
+                f.invoke(out);
+            }
+
+            // TODO: insert code to write html after writing the body content.
+            // e.g.:
+            //
+            // out.println("    </blockquote>");
+        } catch (java.io.IOException ex) {
+            throw new JspException("Error in bodyHora tag", ex);
+        }
     }
     
 }

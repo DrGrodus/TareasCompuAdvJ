@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="Act6TLD" uri="/WEB-INF/tlds/Act6TLD"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,9 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <Act6TLD:nombreFecha/>
+        <br>
+        <Act6TLD:bodyHora>Hora</Act6TLD:bodyHora>
         <h1>Hello World!</h1>
     </body>
 </html>

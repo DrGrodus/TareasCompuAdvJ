@@ -22,11 +22,43 @@
                 out.println(sesion.getAttribute("user"));
             }
         %>
-        
+
         <form action="Controlador" method="post">
             <label>Escribe tu usuario (si es que no esta presente): </label><br>
             <input type="text" placeholder="Usuario" name="user"><br>
             <input type="submit" value="Guardar"><br>
         </form>
+        
+        
+        
+        <h3>Calcular el área de un triángulo equilátero</h3><br>
+        <%
+            Cookie ck[] = request.getCookies();
+            if(ck != null){
+                for(int i=0;i<ck.length;i++){
+                    if(ck[i].getName().equals("campo_Base")){
+                        out.println("Tu operacion anterior fue:\n" 
+                                + "Base: "+ ck[i].getValue() + " \nunidades ||");
+                    }
+                    if(ck[i].getName().equals("campo_Altura")){
+                        out.println("Altura: " + ck[i].getValue() + " \nunidades ||");
+                    }
+                    if(ck[i].getName().equals("area")){
+                        out.println("Area: " + ck[i].getValue() + " \nunidades ||");
+                    }
+                    if(ck[i].getName().equals("perimetro")){
+                        out.println("Perimetro: " + ck[i].getValue() + " \nunidades ||");
+                    }
+                }
+            }
+        %>
+        <form action="ReceptorSuma" method="post">
+            <label>Base</label>
+            <input id="campo_base" name="campo_Base" type="text" placeholder="Base"><br>
+            <label>Altura</label>
+            <input id="campo_altura" name="campo_Altura" type="text" placeholder="Altura"><br>
+            <input type="submit" value="Calcular">
+        </form>
+        
     </body>
 </html>

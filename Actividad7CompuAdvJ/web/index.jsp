@@ -14,17 +14,19 @@
     </head>
     <body>
         <%
-            HttpSession sesion = request.getSession();
+            HttpSession sesion = request.getSession(false);
             Enumeration e = sesion.getAttributeNames();
+            
             if(e.hasMoreElements()){
                 out.println("Hola de nuevo: ");
-                out.println(sesion.getAttribute(""));
-            } else{
-                boolean dis = true;
+                out.println(sesion.getAttribute("user"));
             }
         %>
-        <%
-            
-        %>
+        
+        <form action="Controlador" method="post">
+            <label>Escribe tu usuario (si es que no esta presente): </label><br>
+            <input type="text" placeholder="Usuario" name="user"><br>
+            <input type="submit" value="Guardar"><br>
+        </form>
     </body>
 </html>

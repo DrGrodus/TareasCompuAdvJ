@@ -81,8 +81,6 @@ public class ReceptorSuma extends HttpServlet {
         String base = request.getParameter("campo_Base");
         String altura = request.getParameter("campo_Altura");
 
-        Validar(request, response, base, altura);
-
         if (request.getAttribute("flag") != null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         } else {
@@ -109,17 +107,11 @@ public class ReceptorSuma extends HttpServlet {
 
     }
 
-    private void Validar(ServletRequest request, ServletResponse response,
-            String base, String altura)
-            throws IOException, ServletException {
-        if (base != null && altura != null) {
-            double numBase = Double.parseDouble(base);
-            double numAltu = Double.parseDouble(altura);
-            if (numBase < 0 || numAltu < 0) {
-                request.setAttribute("flag", 1); // flag es sirve para continuar con el programa
-            }
-        }
-    }
+//    private void Validar(ServletRequest request, ServletResponse response,
+//            String base, String altura)
+//            throws IOException, ServletException {
+//        
+//        }
 
     /**
      * Returns a short description of the servlet.

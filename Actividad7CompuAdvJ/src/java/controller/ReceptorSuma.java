@@ -116,7 +116,7 @@ public class ReceptorSuma extends HttpServlet {
             double numBase = Double.parseDouble(base);
             double numAltu = Double.parseDouble(altura);
             if (numBase < 0 || numAltu < 0) {
-                request.setAttribute("flag", 1);
+                request.setAttribute("flag", 1); // flag es sirve para continuar con el programa
             }
         }
     }

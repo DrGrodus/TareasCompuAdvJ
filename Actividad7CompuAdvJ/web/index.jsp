@@ -32,6 +32,13 @@
         
         
         <h3>Calcular el área de un triángulo equilátero</h3><br>
+        
+        <%
+            if(request.getAttribute("flag")!= null){
+                out.println("<h2>Los valores de base y altura no puede ser menores a 0</h2>");
+            }
+        %>
+        
         <%
             Cookie ck[] = request.getCookies();
             if(ck != null){

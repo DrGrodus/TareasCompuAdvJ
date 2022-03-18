@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author eber
  */
+//@WebFilter(filterName = "ReceptorSuma"
+//        , urlPatterns = {"/*.java"}
+//        , dispatcherTypes = {DispatcherType.REQUEST})
 public class ReceptorSuma extends HttpServlet {
 
     /**
@@ -75,26 +80,45 @@ public class ReceptorSuma extends HttpServlet {
         RequestDispatcher view = request.getRequestDispatcher("Resultado.jsp");
         String base = request.getParameter("campo_Base");
         String altura = request.getParameter("campo_Altura");
-        
-        Cookie ck = new Cookie("campo_Base", base);
-        response.addCookie(ck);
-        ck = new Cookie("campo_Altura", altura);
-        response.addCookie(ck);
-        
-        triangulo tri = new triangulo(base, altura);
-        tri.OperarArea();
-        double area = tri.getArea();
-        request.setAttribute("area", area);
-        ck = new Cookie("area", Double.toString(area));
-        response.addCookie(ck);
 
-        tri.OperarPerimetro();
-        double perimetro = tri.getPerimetro();
-        request.setAttribute("perimetro", perimetro);
-        ck = new Cookie("perimetro", Double.toString(perimetro));
-        response.addCookie(ck);
-        
-        view.forward(request, response);
+        Validar(request, response, base, altura);
+
+        if (request.getAttribute("flag") != null) {
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        } else {
+            Cookie ck = new Cookie("campo_Base", base);
+            response.addCookie(ck);
+            ck = new Cookie("campo_Altura", altura);
+            response.addCookie(ck);
+
+            triangulo tri = new triangulo(base, altura);
+            tri.OperarArea();
+            double area = tri.getArea();
+            request.setAttribute("area", area);
+            ck = new Cookie("area", Double.toString(area));
+            response.addCookie(ck);
+
+            tri.OperarPerimetro();
+            double perimetro = tri.getPerimetro();
+            request.setAttribute("perimetro", perimetro);
+            ck = new Cookie("perimetro", Double.toString(perimetro));
+            response.addCookie(ck);
+
+            view.forward(request, response);
+        }
+
+    }
+
+    private void Validar(ServletRequest request, ServletResponse response,
+            String base, String altura)
+            throws IOException, ServletException {
+        if (base != null && altura != null) {
+            double numBase = Double.parseDouble(base);
+            double numAltu = Double.parseDouble(altura);
+            if (numBase < 0 || numAltu < 0) {
+                request.setAttribute("flag", 1);
+            }
+        }
     }
 
     /**

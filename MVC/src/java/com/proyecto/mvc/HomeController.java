@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
-    @RequestMapping(value = "holaMundo.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "holaMundo.htm", method = RequestMethod.POST)
     public String holaMundo(){
         System.out.println("Hola mundo!");
         return "holaMundo";

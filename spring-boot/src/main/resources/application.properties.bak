@@ -1,0 +1,6 @@
+spring.datasource.driver-class-name==org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.url=jdbc:postgresql://ec2-3-217-251-77.compute-1.amazonaws.com:5432/db01qetun2doih
+spring.datasource.username=qqyiapjblwkfgh
+spring.datasource.password=    ae82bffb7d60177a994148bd7faefa9dc1772cfb2f64a458ba2702e7a7df839e
+#spring.jpa.hibernate.ddl-auto=create

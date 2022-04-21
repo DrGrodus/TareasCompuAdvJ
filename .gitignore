@@ -14,3 +14,5 @@ Actividad7CompuAdvJ/build/
 /Actividad11CompuAdvJ/build/
 /Actividad12CompuAdvJ/nbproject/private/
 /Actividad10CompuAdvJ/nbproject/private/
+/spring-boot/src/main/resources/application.properties
+*.bak

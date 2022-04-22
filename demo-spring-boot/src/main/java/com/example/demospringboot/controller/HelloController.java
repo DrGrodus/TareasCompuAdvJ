@@ -23,8 +23,8 @@ public class HelloController {
     
     
     @GetMapping("/")
-    public String index() {
+    public Iterable<Customer> index() {
         Iterable<Customer> customer = customerRepository.findAll();
-        return "Saludos de Spring Boot";
+        return customer; // "Saludos de Spring Boot ahora si en condiciones"
     }
 }

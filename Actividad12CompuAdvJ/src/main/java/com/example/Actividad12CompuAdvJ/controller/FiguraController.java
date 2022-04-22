@@ -4,6 +4,11 @@
  */
 package com.example.Actividad12CompuAdvJ.controller;
 
+import com.example.Actividad12CompuAdvJ.dto.TrianguloDTO;
+import com.example.Actividad12CompuAdvJ.entity.Triangulo;
+import com.example.Actividad12CompuAdvJ.servicio.FiguraService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,11 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @author eber
  */
 @RestController()
-@RequestMapping("persona")
+@RequestMapping("figura")
 public class FiguraController {
 
+    @Autowired
+    FiguraService figuraService;
+    
     @GetMapping()
-    public String holaMundo() {
-        return "Hola!";
+    public List<TrianguloDTO> getTriangulos() {
+        Triangulo triangulo = new Triangulo();
+        triangulo.setAltura(1234d);
+        triangulo.setBase(1234d);
+        figuraService.guardarTriangulo(triangulo);
+        return (List<TrianguloDTO>) figuraService.getTriangulos();
     }
 }

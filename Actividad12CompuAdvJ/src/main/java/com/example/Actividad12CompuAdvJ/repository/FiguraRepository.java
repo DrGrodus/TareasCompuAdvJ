@@ -11,6 +11,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author eber
  */
-public interface Figura extends CrudRepository<Triangulo, Integer>{
+public interface FiguraRepository extends CrudRepository<Triangulo, Integer>{
     
 }

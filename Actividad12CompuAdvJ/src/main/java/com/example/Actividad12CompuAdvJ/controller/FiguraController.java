@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController()
 @RequestMapping("persona")
-public class PersonaController {
+public class FiguraController {
 
     @GetMapping()
     public String holaMundo() {

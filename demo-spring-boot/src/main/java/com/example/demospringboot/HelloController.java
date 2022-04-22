@@ -4,6 +4,7 @@
  */
 package com.example.demospringboot;
 
+import com.example.demospringboot.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ public class HelloController {
 
     // inyeccion de dependencia customerRepository, con la entidad Customer
     @Autowired 
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
     
     
     @GetMapping("/")

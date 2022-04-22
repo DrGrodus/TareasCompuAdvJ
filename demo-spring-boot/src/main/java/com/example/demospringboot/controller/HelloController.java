@@ -5,7 +5,7 @@
 package com.example.demospringboot.controller;
 
 import com.example.demospringboot.entity.Customer;
-import com.example.demospringboot.repository.CustomerRepository;
+import com.example.demospringboot.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

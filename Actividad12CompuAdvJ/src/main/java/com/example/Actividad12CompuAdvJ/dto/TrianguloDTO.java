@@ -17,6 +17,8 @@ public class TrianguloDTO {
     private Integer id;
     private Double altura;
     private Double base;
+    private Double area;
+    private Double perimetro;
     
     public Double area() {
         return altura*base/2;
@@ -30,6 +32,8 @@ public class TrianguloDTO {
         this.id = triangulo.getId();
         this.altura = triangulo.getAltura();
         this.base = triangulo.getBase();
+        this.area = triangulo.getArea();
+        this.perimetro = triangulo.getPerimetro();
     }
     
 }

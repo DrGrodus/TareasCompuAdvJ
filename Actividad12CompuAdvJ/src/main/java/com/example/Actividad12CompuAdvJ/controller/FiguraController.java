@@ -27,8 +27,10 @@ public class FiguraController {
     @GetMapping()
     public List<TrianguloDTO> getTriangulos() {
         Triangulo triangulo = new Triangulo();
-        triangulo.setAltura(1234d);
-        triangulo.setBase(1234d);
+        triangulo.setAltura(Math.random()*100);
+        triangulo.setBase(Math.random()*100);
+        triangulo.setArea((triangulo.getBase()*triangulo.getAltura())/2);
+        triangulo.setPerimetro(triangulo.getBase()*3);
         figuraService.guardarTriangulo(triangulo);
         return (List<TrianguloDTO>) figuraService.getTriangulos();
     }

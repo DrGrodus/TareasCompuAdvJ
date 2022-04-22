@@ -29,4 +29,10 @@ public class Triangulo {
     @Column()
     private Double altura;
     
+    @Column()
+    private Double area;
+    
+    @Column()
+    private Double perimetro;
+    
 }

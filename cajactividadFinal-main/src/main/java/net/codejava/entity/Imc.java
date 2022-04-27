@@ -19,8 +19,12 @@ public class Imc implements Serializable {
     @Id
     Integer id;
     String nombrePersona;
+    String apellido;
+    Integer edad;
     Double peso;
-    Double altura;
+    Double estatura;
+    Double imc;
+    String fecha;
 
     public Integer getId() {
         return id;
@@ -38,6 +42,22 @@ public class Imc implements Serializable {
         this.nombrePersona = nombrePersona;
     }
 
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
     public Double getPeso() {
         return peso;
     }
@@ -46,12 +66,30 @@ public class Imc implements Serializable {
         this.peso = peso;
     }
 
-    public Double getAltura() {
-        return altura;
+    public Double getEstatura() {
+        return estatura;
     }
 
-    public void setAltura(Double altura) {
-        this.altura = altura;
+    public void setEstatura(Double estatura) {
+        this.estatura = estatura;
     }
 
+    public Double getImc() {
+        return imc;
+    }
+
+    public void setImc(Double imc) {
+        this.imc = imc;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    
+    
 }

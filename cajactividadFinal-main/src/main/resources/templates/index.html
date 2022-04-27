@@ -23,22 +23,28 @@
                         <th>Edad</th>
                         <th>Sexo</th>
                         <th>Peso</th>
+                        <th>Estatura</th>
                         <th>IMC</th>
                         <th>Fecha</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr th:each="product : ${listProducts}">
-                        <td th:text="${product.id}">Product ID</td>
-                        <td th:text="${product.name}">Name</td>
-                        <td th:text="${product.brand}">Brand</td>
-                        <td th:text="${product.madein}">Made in</td>
-                        <td th:text="${product.price}">Price</td>
-                        <td><a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+                    <tr th:each="imcObj : ${listImc}">
+                        <td th:text="${imcObj.id}">ID</td>
+                        <td th:text="${imcObj.nombrePersona}">Nombre</td>
+                        <td th:text="${imcObj.apellido}">Apellido</td>
+                        <td th:text="${imcObj.edad}">Edad</td>
+                        <td th:text="${imcObj.sexo}">Sexo</td>
+                        <td th:text="${imcObj.peso}">Peso</td>
+                        <td th:text="${imcObj.estatura}">Estatura</td>
+                        <td th:text="${imcObj.imc}">IMC</td>
+                        <td th:text="${imcObj.fecha}">Fecha</td>
+<!--                        <td><a th:href="@{'/edit/' + ${imcObj.id}}">Edit</a>
                             &nbsp;&nbsp;&nbsp;
-                            <a th:href="@{'/delete/' + ${product.id}}">Delete</a>
-                        </td>
+                            <a th:href="@{'/delete/' + ${imcObj.id}}">Delete</a>
+                        </td>-->
                     </tr>
                 </tbody>
             </table>

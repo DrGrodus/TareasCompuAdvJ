@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package net.codejava.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -16,21 +13,40 @@ import javax.persistence.Id;
 @Entity
 public class Imc implements Serializable {
 
-    @Id
-    Integer id;
-    String nombrePersona;
-    String apellido;
-    Integer edad;
-    Double peso;
-    Double estatura;
-    Double imc;
-    String fecha;
+    private Long id;
+    private String nombrePersona;
+    private String apellido;
+    private Integer edad;
+    private String sexo;
+    private Double peso;
+    private Double estatura;
+    private Double imc; // imcValue
+    private String fecha;
+    
+    public Imc(){
+    }
 
-    public Integer getId() {
+    protected Imc(Long id, String nombrePersona, String apellido, Integer edad, String sexo, Double peso, Double estatura, Double imc, String fecha) {
+        super();
+        this.id = id;
+        this.nombrePersona = nombrePersona;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.peso = peso;
+        this.estatura = estatura;
+        this.imc = imc; 
+        this.fecha = fecha;
+    }
+    
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,6 +72,14 @@ public class Imc implements Serializable {
 
     public void setEdad(Integer edad) {
         this.edad = edad;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public Double getPeso() {
@@ -90,6 +114,4 @@ public class Imc implements Serializable {
         this.fecha = fecha;
     }
 
-    
-    
 }

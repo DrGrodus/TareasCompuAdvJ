@@ -49,6 +49,11 @@ public class AppController {
         // model.addAttribute("listProducts", listProducts);
         return "redirect:/";
     }
+    
+    @RequestMapping("/registro")
+    public String registro() {
+        return "registro";
+    }
 
     @RequestMapping("/new")
     public String showNewProductPage(Model model) {

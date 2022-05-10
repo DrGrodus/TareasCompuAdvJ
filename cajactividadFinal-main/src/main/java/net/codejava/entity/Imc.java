@@ -21,6 +21,7 @@ public class Imc implements Serializable {
     String nombrePersona;
     Double peso;
     Double altura;
+    Double imc;
 
     public Integer getId() {
         return id;

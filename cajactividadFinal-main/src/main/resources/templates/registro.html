@@ -6,41 +6,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form action="#" th:action="@{/save}" th:object="${imcObj}" method="post">
+        <form action="#" th:action="@{/registro}" th:object="${CuentaUsuario}" method="post"> <!-- <form action="#" th:action="@{/save}" th:object="${imcObj}" method="post">-->
             <table border="0" cellpadding="10">
                 <tr>
                     <td>Nombre: </td>
-                    <td><input type="text" th:field="*{nombrePersona}" /></td>
+                    <td><input type="text" th:field="*{nombrePersona}" name="nombrePersona"/></td>
                 </tr>
                 
                 <tr>
                     <td>Apellido:</td>
-                    <td><input type="text" th:field="*{apellido}" /></td>
+                    <td><input type="text" th:field="*{apellido}" name="apellido"/></td>
                 </tr>
                 
                 <tr>
                     <td>Edad:</td>
-                    <td><input type="text" th:field="*{edad}" /></td>
+                    <td><input type="text" th:field="*{edad}" name="edad"/></td>
+                    <td th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}">La edad debe ser mayor a 15</td>
                 </tr>
                 
                 <tr>
                     <td>Sexo:</td>
-                    <td><input type="text" th:field="*{sexo}" /></td>
+                    <td><input type="text" th:field="*{sexo}" name="sexo"/></td>
                 </tr>
                 
                 <tr>
                     <td>Estatura:</td>
-                    <td><input type="text" th:field="*{estatura}"/></td>
+                    <td><input type="text" th:field="*{estatura}" name="estatura"/></td>
+                    <td th:if="${#fields.hasErrors('estatura')}" th:errors="*{estatura}">La estatura no debe ser menor a 1m, o mayor de 2.5m</td>
                 </tr>
                 
                 <tr>
                     <td>Nombre de Usuario:</td>
-                    <td><input type="text" th:field="*{username}"/></td>
+                    <td><input type="text" th:field="*{nombreUsuario}" name="nombreUsuario"/></td>
                 </tr>
                 
                 <tr>
                     <td>Contrasena:</td>
-                    <td><input type="password" th:field="*{password}"/></td>
+                    <td><input type="password" th:field="*{contrasena}" name="contrasena"/></td>
                 </tr>
 
                 <tr>

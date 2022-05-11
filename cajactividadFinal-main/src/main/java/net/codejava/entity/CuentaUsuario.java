@@ -31,16 +31,21 @@ public class CuentaUsuario implements Serializable {
     private String sexo;
 
     @NotNull
-    @Min((long) 100)
-    @Max((long) 250)
+    @Min(100)
+    @Max(250)
     private Integer estatura;
+    
+    @Min(1)
+    private Integer peso;
 
     private String nombreUsuario;
     private String contrasena;
+    private Double iMC;
+    private String fecha;
 
     public CuentaUsuario() {
     }
-
+    
     public CuentaUsuario(Long id, String nombrePersona, String apellido, Integer edad, 
                         String sexo, Integer estatura, String nombreUsuario, String contrasena) {
         this.id = id;
@@ -51,6 +56,23 @@ public class CuentaUsuario implements Serializable {
         this.estatura = estatura;
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
+    }
+
+    public CuentaUsuario(Integer peso) {
+        this.peso = peso;
+    }
+    
+    public CuentaUsuario(Double iMC, String fecha) {
+        this.iMC = iMC;
+        this.fecha = fecha;
+    }
+
+    public CuentaUsuario(Double iMC) {
+        this.iMC = iMC;
+    }
+
+    public CuentaUsuario(String fecha) {
+        this.fecha = fecha;
     }
 
     @Id
@@ -103,6 +125,14 @@ public class CuentaUsuario implements Serializable {
         this.estatura = estatura;
     }
 
+    public Integer getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Integer peso) {
+        this.peso = peso;
+    }
+        
     public String getNombreUsuario() {
         return nombreUsuario;
     }
@@ -119,4 +149,21 @@ public class CuentaUsuario implements Serializable {
         this.contrasena = contrasena;
     }
 
+    public Double getiMC() {
+        return iMC;
+    }
+
+    public void setiMC(Double iMC) {
+        this.iMC = iMC;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
+    
 }

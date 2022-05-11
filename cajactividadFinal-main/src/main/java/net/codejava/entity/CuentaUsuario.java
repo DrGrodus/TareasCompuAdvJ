@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -23,14 +24,16 @@ public class CuentaUsuario implements Serializable {
     private String nombrePersona;
     private String apellido;
     
+    @NotNull
     @Min(15)
     private Integer edad;
     
     private String sexo;
 
-    @Min((long) 1.1)
-    @Max((long) 2.4)
-    private Double estatura;
+    @NotNull
+    @Min((long) 100)
+    @Max((long) 250)
+    private Integer estatura;
 
     private String nombreUsuario;
     private String contrasena;
@@ -39,7 +42,7 @@ public class CuentaUsuario implements Serializable {
     }
 
     public CuentaUsuario(Long id, String nombrePersona, String apellido, Integer edad, 
-                        String sexo, Double estatura, String nombreUsuario, String contrasena) {
+                        String sexo, Integer estatura, String nombreUsuario, String contrasena) {
         this.id = id;
         this.nombrePersona = nombrePersona;
         this.apellido = apellido;
@@ -92,11 +95,11 @@ public class CuentaUsuario implements Serializable {
         this.sexo = sexo;
     }
 
-    public Double getEstatura() {
+    public Integer getEstatura() {
         return estatura;
     }
 
-    public void setEstatura(Double estatura) {
+    public void setEstatura(Integer estatura) {
         this.estatura = estatura;
     }
 

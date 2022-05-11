@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form action="#" th:action="@{/registro}" th:object="${cuentaUsuario}" method="post"> <!-- <form action="#" th:action="@{/save}" th:object="${imcObj}" method="post">-->
+        <form action="#" th:action="@{/registro}" th:object="${cuentaUsuario}" method="post">
             <table border="0" cellpadding="10">
                 <tr>
                     <td>Nombre: </td>
@@ -30,7 +30,7 @@
                 </tr>
                 
                 <tr>
-                    <td>Estatura:</td>
+                    <td>Estatura (en centimetros):</td>
                     <td><input type="text" th:field="*{estatura}" name="estatura"/></td>
                     <td th:if="${#fields.hasErrors('estatura')}" th:errors="*{estatura}">La estatura no debe ser menor a 1m, o mayor de 2.5m</td>
                 </tr>

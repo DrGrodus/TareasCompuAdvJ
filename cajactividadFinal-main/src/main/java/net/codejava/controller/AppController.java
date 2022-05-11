@@ -36,7 +36,7 @@ public class AppController implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/resultado").setViewName("resultado");
+        registry.addViewController("/index").setViewName("index");
     }
 
     @RequestMapping("/")
@@ -71,7 +71,7 @@ public class AppController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "registro";
         }
-        return "redirect:/resultado";
+        return "redirect:/index";
     }
 
     @RequestMapping("/new")

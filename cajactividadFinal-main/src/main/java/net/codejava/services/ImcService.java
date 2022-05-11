@@ -34,5 +34,8 @@ public class ImcService {
     public Imc get(long id) {
         return imcRepository.findById(id).get();
     }
-
+    
+    public void delete(long id){
+        imcRepository.deleteById(id);
+    }
 }

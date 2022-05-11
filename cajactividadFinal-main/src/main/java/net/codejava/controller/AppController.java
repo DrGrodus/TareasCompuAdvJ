@@ -43,8 +43,8 @@ public class AppController implements WebMvcConfigurer {
     public String viewHomePage(HttpSession session, Model model) {
 
         if (session.getAttribute("mySessionAttribute") != null) {
-            List<Product> listProducts = service.listAll();
-            model.addAttribute("listProducts", listProducts);
+            List<Imc> listImc = imcService.listAll();
+            model.addAttribute("listImc", listImc);
             return "index";
         } else {
             model.addAttribute("formulario", new Formulario());
@@ -76,36 +76,29 @@ public class AppController implements WebMvcConfigurer {
 
     @RequestMapping("/new")
     public String showNewProductPage(Model model) {
-        Product product = new Product();
-        model.addAttribute("product", product);
-
+        Imc imcObj = new Imc();
+        model.addAttribute("imcObj", imcObj);
         return "new_product";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("product") Product product) {
-        service.save(product);
-        Imc imc = new Imc();
-        imc.setId(1);
-        imc.setNombrePersona("Alfredo");
-        imc.setAltura(1.80);
-        imc.setPeso(87d);
-        imcService.save(imc);
+    public String saveProduct(@ModelAttribute("imcObj") Imc imcObj) {
+        imcService.save(imcObj);
         return "redirect:/";
     }
 
     @RequestMapping("/edit/{id}")
     public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("edit_product");
-        Product product = service.get(id);
-        mav.addObject("product", product);
+        Imc imcObj = imcService.get(id);
+        mav.addObject("imc", imcObj);
 
         return mav;
     }
 
     @RequestMapping("/delete/{id}")
     public String deleteProduct(@PathVariable(name = "id") int id) {
-        service.delete(id);
+        imcService.delete(id);
         return "redirect:/";
     }
 }

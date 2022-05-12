@@ -1,16 +1,12 @@
 package net.codejava.controller;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import net.codejava.services.ProductService;
-import net.codejava.Usuario;
 import net.codejava.entity.CuentaUsuario;
 import net.codejava.entity.Formulario;
 import net.codejava.entity.Imc;
-import net.codejava.entity.Product;
 import net.codejava.services.ImcService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +25,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Controller
 public class AppController implements WebMvcConfigurer {
 
-    @Autowired
-    private ProductService service;
+    
     @Autowired
     private ImcService imcService;
 
@@ -90,7 +85,6 @@ public class AppController implements WebMvcConfigurer {
     @RequestMapping("/new")
     public String showNewProductPage(Model model) {
         Imc imcObj = new Imc();
-        CuentaUsuario cuentaUsuario = new CuentaUsuario();
 //        imcObj.setEstatura(cuentaUsuario.getEstatura());
         
         model.addAttribute("imcObj", imcObj);
@@ -98,9 +92,13 @@ public class AppController implements WebMvcConfigurer {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("imcObj") Imc imcObj) {
+    public String saveProduct(@ModelAttribute("imcObj") Imc imcObj, CuentaUsuario cuentaUsuario) {
 //        imcObj.getId();
 //        imcObj.setImc(imcObj.getPeso() / Math.pow((imcObj.getEstatura())/100, 2));
+        imcObj.setNombrePersona(cuentaUsuario.getNombrePersona());
+        
+        imcObj.setEstatura(Double.valueOf(cuentaUsuario.getEstatura()));
+        imcObj.setImc(imcObj.getPeso()/ Math.pow((imcObj.getEstatura())/100, 2));
         imcService.save(imcObj);
         return "redirect:/";
     }
@@ -108,8 +106,8 @@ public class AppController implements WebMvcConfigurer {
 //    @RequestMapping(value = "/resultado", method = RequestMethod.POST)
     @PostMapping("/resultado")
     public String mostrarResultado(Imc imcObj, CuentaUsuario cuentaUsuario){
-        imcObj.setEstatura(cuentaUsuario.getEstatura());
-        imcObj.setImc(imcObj.getPeso() / Math.pow((imcObj.getEstatura())/100, 2));
+//        imcObj.setEstatura(cuentaUsuario.getEstatura());
+//        imcObj.setImc(imcObj.getPeso() / Math.pow((imcObj.getEstatura())/100, 2));
         imcService.save(imcObj);
         return "redirect:/";
     }

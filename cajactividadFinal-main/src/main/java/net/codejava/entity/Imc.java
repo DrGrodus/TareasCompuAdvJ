@@ -22,14 +22,14 @@ public class Imc implements Serializable {
     @NotNull
     private Double peso;
     
-    private Integer estatura;
+    private Double estatura;
     private Double imc;
     private String fecha;
 
     public Imc() {
     }
 
-    public Imc(Long id, Double peso, Integer estatura, Double imc, String fecha) {
+    public Imc(Long id, Double peso, Double estatura, Double imc, String fecha) {
         super();
         this.id = id;
         this.peso = peso;
@@ -72,11 +72,11 @@ public class Imc implements Serializable {
         this.peso = peso;
     }
 
-    public Integer getEstatura() {
+    public Double getEstatura() {
         return estatura;
     }
 
-    public void setEstatura(Integer estatura) {
+    public void setEstatura(Double estatura) {
         this.estatura = estatura;
     }
 

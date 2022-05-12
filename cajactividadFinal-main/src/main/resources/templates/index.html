@@ -18,6 +18,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>nombre</th>
                         <th>Peso</th>
                         <th>Estatura</th>
                         <th>IMC</th>
@@ -27,6 +28,8 @@
 
                 <tbody>
                     <tr th:each="imcObj : ${listImc}">
+                        <td th:text="${imcObj.id}">ID</td>
+                        <td th:text="${imcObj.nombrePersona}"></td>
                         <td th:text="${imcObj.peso}">Peso</td>
                         <td th:text="${imcObj.estatura}">Estatura</td>
                         <td th:text="${imcObj.imc}">IMC</td>

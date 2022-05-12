@@ -37,8 +37,11 @@ public class CuentaUsuario implements Serializable {
     
     @Min(1)
     private Integer peso;
-
+    
+//    @NotNull
+//    @Min(1)
     private String nombreUsuario;
+    
     private String contrasena;
     private Double iMC;
     private String fecha;

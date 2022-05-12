@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package net.codejava.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -16,18 +15,44 @@ import javax.persistence.Id;
 @Entity
 public class Imc implements Serializable {
 
-    @Id
-    Integer id;
-    String nombrePersona;
-    Double peso;
-    Double altura;
-    Double imc;
+    private Long id;
+    private String nombrePersona;
+    
+    @Min(1)
+    @NotNull
+    private Double peso;
+    
+    private Integer estatura;
+    private Double imc;
+    private String fecha;
 
-    public Integer getId() {
+    public Imc() {
+    }
+
+    public Imc(Long id, Double peso, Integer estatura, Double imc, String fecha) {
+        super();
+        this.id = id;
+        this.peso = peso;
+        this.estatura = estatura;
+        this.imc = imc;
+        this.fecha = fecha;
+    }
+
+//    public Imc(Long id, String nombrePersona, Double peso, Integer estatura, Double imc) {
+//        this.id = id;
+//        this.nombrePersona = nombrePersona;
+//        this.peso = peso;
+//        this.estatura = estatura;
+//        this.imc = imc;
+//    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -47,12 +72,30 @@ public class Imc implements Serializable {
         this.peso = peso;
     }
 
-    public Double getAltura() {
-        return altura;
+    public Integer getEstatura() {
+        return estatura;
     }
 
-    public void setAltura(Double altura) {
-        this.altura = altura;
+    public void setEstatura(Integer estatura) {
+        this.estatura = estatura;
     }
+
+    public Double getImc() {
+        return imc;
+    }
+
+    public void setImc(Double imc) {
+        this.imc = imc;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    
 
 }

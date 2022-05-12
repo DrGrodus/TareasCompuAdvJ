@@ -1,6 +1,11 @@
 package net.codejava.controller;
 
+import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -24,7 +29,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Controller
 public class AppController implements WebMvcConfigurer {
-
+    Double estatura;
+    
     
     @Autowired
     private ImcService imcService;
@@ -95,10 +101,16 @@ public class AppController implements WebMvcConfigurer {
     public String saveProduct(@ModelAttribute("imcObj") Imc imcObj, CuentaUsuario cuentaUsuario) {
 //        imcObj.getId();
 //        imcObj.setImc(imcObj.getPeso() / Math.pow((imcObj.getEstatura())/100, 2));
-        imcObj.setNombrePersona(cuentaUsuario.getNombrePersona());
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss");
+        NumberFormat n = NumberFormat.getIntegerInstance();
+        //nombre = cuentaUsuario.getNombrePersona();
+        estatura = Double.valueOf(cuentaUsuario.getEstatura());
         
-        imcObj.setEstatura(Double.valueOf(cuentaUsuario.getEstatura()));
-        imcObj.setImc(imcObj.getPeso()/ Math.pow((imcObj.getEstatura())/100, 2));
+        
+        imcObj.setNombrePersona(cuentaUsuario.getNombrePersona()); // cuentaUsuario.getNombrePersona()
+        imcObj.setEstatura(estatura); // Double.valueOf(cuentaUsuario.getEstatura())
+        imcObj.setImc(Double.parseDouble(n.format(imcObj.getPeso()/ Math.pow((imcObj.getEstatura())/100, 2))));
+        imcObj.setFecha(dtf2.format(LocalDateTime.now()));
         imcService.save(imcObj);
         return "redirect:/";
     }

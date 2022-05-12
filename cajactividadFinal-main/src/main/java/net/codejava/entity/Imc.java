@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -19,7 +18,6 @@ public class Imc implements Serializable {
     private String nombrePersona;
     
     @Min(1)
-    @NotNull
     private Double peso;
     
     private Double estatura;
@@ -30,21 +28,12 @@ public class Imc implements Serializable {
     }
 
     public Imc(Long id, Double peso, Double estatura, Double imc, String fecha) {
-        super();
         this.id = id;
         this.peso = peso;
         this.estatura = estatura;
         this.imc = imc;
         this.fecha = fecha;
     }
-
-//    public Imc(Long id, String nombrePersona, Double peso, Integer estatura, Double imc) {
-//        this.id = id;
-//        this.nombrePersona = nombrePersona;
-//        this.peso = peso;
-//        this.estatura = estatura;
-//        this.imc = imc;
-//    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -30,7 +30,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Controller
 public class AppController implements WebMvcConfigurer {
     Double estatura;
-    
+    String nombre;
     
     @Autowired
     private ImcService imcService;
@@ -79,7 +79,12 @@ public class AppController implements WebMvcConfigurer {
         if(bindingResult.hasErrors()){
             return "registro";
         }
+        cuentaUsuario.getEstatura();
         session.setAttribute("mySessionAttribute", cuentaUsuario.getNombreUsuario());
+        final Double temp = Double.parseDouble(Integer.toString(cuentaUsuario.getEstatura()));
+        final String tempS = cuentaUsuario.getNombrePersona();
+        estatura = temp;
+        nombre = tempS;
         return "redirect:/";
     }
 
@@ -99,15 +104,12 @@ public class AppController implements WebMvcConfigurer {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute("imcObj") Imc imcObj, CuentaUsuario cuentaUsuario) {
-//        imcObj.getId();
-//        imcObj.setImc(imcObj.getPeso() / Math.pow((imcObj.getEstatura())/100, 2));
         DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss");
         NumberFormat n = NumberFormat.getIntegerInstance();
-        //nombre = cuentaUsuario.getNombrePersona();
-        estatura = Double.valueOf(cuentaUsuario.getEstatura());
         
         
-        imcObj.setNombrePersona(cuentaUsuario.getNombrePersona()); // cuentaUsuario.getNombrePersona()
+        
+        imcObj.setNombrePersona(nombre);
         imcObj.setEstatura(estatura); // Double.valueOf(cuentaUsuario.getEstatura())
         imcObj.setImc(Double.parseDouble(n.format(imcObj.getPeso()/ Math.pow((imcObj.getEstatura())/100, 2))));
         imcObj.setFecha(dtf2.format(LocalDateTime.now()));

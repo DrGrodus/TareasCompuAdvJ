@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
+        <title>Registra tu cuenta</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <form action="#" th:action="@{/registro}" th:object="${cuentaUsuario}" method="post">
+        <h1>Registro</h1>
+        <form action="#" th:action="@{/registro}" th:object="${cuentaUsuario}" method="POST">
             <table border="0" cellpadding="10">
                 <tr>
                     <td>Nombre: </td>
@@ -37,7 +38,7 @@
                 
                 <tr>
                     <td>Nombre de Usuario:</td>
-                    <td><input type="text" th:field="*{nombreUsuario}" name="nombreUsuario"/></td>
+                    <td><input type="text" th:field="*{nombreUsuario}" name="nombreUsuario" required/></td>
                 </tr>
                 
                 <tr>

@@ -2,10 +2,8 @@ package net.codejava.controller;
 
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
